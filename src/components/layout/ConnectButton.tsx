@@ -1,0 +1,62 @@
+"use client";
+
+import { useConnect } from "@/contexts/WalletConnectProvider";
+import { shortenString } from "@/helpers";
+import { emojiAvatarForAddress } from "@/helpers/emojiAvatarForAddress";
+import { Avatar, Dropdown } from "flowbite-react";
+import { useMemo } from "react";
+import { FaCopy, FaSignOutAlt } from "react-icons/fa";
+
+const ConnectButton = () => {
+  const { address, openModal, disconnectWallet } = useConnect();
+
+  const defaultAvatar = useMemo(
+    () =>
+      address?.ordinals ? emojiAvatarForAddress(address.ordinals) : undefined,
+    [address?.ordinals],
+  );
+
+  return (
+    <div>
+      {(() => {
+        if (!address?.ordinals) {
+          return (
+            <button
+              className="mr-1 flex items-center rounded-xl bg-[#00000040] px-4 py-3 text-sm text-black hover:bg-[#00000080] dark:text-slate-200"
+              onClick={() => openModal()}
+            >
+              Connect Wallet
+            </button>
+          );
+        }
+
+        return (
+          <div className="text-black dark:text-slate-200">
+            <Dropdown
+              inline
+              label={
+                <Avatar rounded placeholderInitials={defaultAvatar?.emoji} />
+              }
+            >
+              <Dropdown.Header>
+                <span className="block truncate text-sm font-medium">
+                  <div className="inline-flex items-center gap-2">
+                    {shortenString(address?.ordinals)}
+                    <button type="button">
+                      <FaCopy className="h-4 w-4" />
+                    </button>
+                  </div>
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item icon={FaSignOutAlt} onClick={disconnectWallet}>
+                Disconnect
+              </Dropdown.Item>
+            </Dropdown>
+          </div>
+        );
+      })()}
+    </div>
+  );
+};
+
+export default ConnectButton;

@@ -1,0 +1,68 @@
+{
+  "name": "bitcoin-mint-frontend",
+  "version": "1.0.0",
+  "description": "Basic UI for bitcoin mint",
+  "license": "MIT",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "format": "prettier . --write",
+    "lint": "next lint --fix",
+    "start": "next start -p 3000",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "npx husky install && npx husky set .husky/pre-commit \"npx lint-staged && git add .\" && npx husky set .husky/commit-msg \"npx --no-install commitlint --edit\""
+  },
+  "engines": {
+    "node": ">= 16"
+  },
+  "dependencies": {
+    "@mempool/mempool.js": "^2.3.0",
+    "@ordzaar/ordit-sdk": "^1.4.0",
+    "@sadoprotocol/ordit-sdk": "^2.3.12",
+    "add": "^2.0.6",
+    "axios": "^1.6.2",
+    "bitcoin-wallet-adapter": "^1.3.4",
+    "flowbite": "^2.3.0",
+    "flowbite-react": "^0.8.0",
+    "net": "^1.0.2",
+    "next": "^14.0.3",
+    "nextjs-toploader": "^1.6.4",
+    "react": "18",
+    "react-dom": "18",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.12.0",
+    "tailwind-merge": "^2.2.2",
+    "tls": "^0.0.1",
+    "yarn": "^1.22.21"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "autoprefixer": "^10",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "^14.0.3",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-plugin-sonarjs": "^0.23.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "postcss": "^8",
+    "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "tailwindcss": "^3",
+    "typescript": "^5"
+  },
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
