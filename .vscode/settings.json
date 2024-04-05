@@ -20,6 +20,7 @@
     "unisat",
     "Unspents",
     "UTXOs",
+    "vsize",
     "xverse"
   ]
 }

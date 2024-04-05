@@ -1,58 +1,39 @@
 import axios from "../axios";
 
-export const getMapImage = async () => {
-  const { data } = await axios.get("/pixel/map");
-  return data;
-};
-
-export const getPixels = async (offset: number = 0, limit: number = 100) => {
-  const { data } = await axios.get("/pixel", {
-    params: {
-      offset,
-      limit,
-    },
-  });
+export const getUserData = async (address: string) => {
+  const { data } = await axios.get(`/user/${address}`);
 
   return data;
 };
 
-export const getPixelDetail = async (id: string) => {
-  const { data } = await axios.get(`/pixel/detail/${id}`);
+export const getEstimateData = async (count: number) => {
+  const { data } = await axios.get(`/estimate?count=${count}`);
 
   return data;
 };
 
-export const reportView = async (id: string | number, actor: string) => {
-  const { data } = await axios.post(`/pixel/view?id=${id}&actor=${actor}`);
-
-  return data;
-};
-
-export const searchPixel = async (
-  offset: number,
-  payload: any,
-  owner?: string,
+export const getMintData = async (
+  receiver: string,
+  count: number,
+  feeRate: number,
 ) => {
   const { data } = await axios.post(
-    `/pixel/search?offset=${offset}` + (owner ? `&owner=${owner}` : ""),
-    payload,
+    `/mint?receiver=${receiver}&count=${count}&fee=${feeRate}`,
   );
 
   return data;
 };
 
-export const getHistory = async (
-  type: string[],
-  offset: number,
-  address?: string,
-  id?: number | string,
-) => {
-  const { data } = await axios.get("/pixel/history", {
+export const getRevealData = async (revealAddress: string) => {
+  const { data } = await axios.get(`/tx?address=${revealAddress}`);
+
+  return data;
+};
+
+export const cancelTx = async (addresses: string[]) => {
+  const { data } = await axios.delete("/tx", {
     params: {
-      type,
-      offset,
-      address,
-      id,
+      addresses,
     },
   });
 

@@ -20,7 +20,7 @@ const AppNavbar: FC<Record<string, never>> = function () {
             <div className="flex items-center">
               <Navbar.Brand href="/">
                 <span className="self-center whitespace-nowrap px-3 text-xl font-semibold dark:text-white">
-                  PixelMap
+                  Ordinal Inscribe
                 </span>
               </Navbar.Brand>
             </div>
