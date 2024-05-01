@@ -8,8 +8,8 @@ import {
   getMintData,
   getUserData,
 } from "@/helpers/api";
-import { waitForTx } from "@/helpers/ordinals/waitForTx";
-import { useFeeRecommended, useSend } from "@/hooks";
+import waitForRevealTx from "@/helpers/ordinals/waitForRevealTx";
+import { useSend } from "@/hooks";
 import { Button, Card, Label } from "flowbite-react";
 import { NextPage } from "next";
 import { useRouter } from "next/navigation";
@@ -35,11 +35,9 @@ const HomeContent: NextPage = () => {
   const router = useRouter();
   const { address, openModal } = useConnect();
   const { sendMulti } = useSend();
-  const feesRecommended = useFeeRecommended();
 
   const [userData, setUserData] = useState<User>();
   const [count, setCount] = useState<number>(1);
-  const [feeRate, setFeeRate] = useState<number>(1);
   const [estimateData, setEstimateData] = useState<any>();
   const [error, setError] = useState<string>();
 
@@ -62,11 +60,11 @@ const HomeContent: NextPage = () => {
     setConfirmOpen(true);
     setErrorStep(undefined);
     setErrorMessage(undefined);
-    let revealData;
+    let res;
     //generate mint param
     setActiveStep(0);
     try {
-      revealData = await getMintData(address.ordinals, count, feeRate);
+      res = await getMintData(address.ordinals, count);
     } catch (error: unknown) {
       console.log(error);
       setErrorStep(0);
@@ -78,14 +76,16 @@ const HomeContent: NextPage = () => {
     }
     setActiveStep(1);
 
+    const addresses = res.revealData.map((item: any) => item.address);
+
     let tx;
     try {
       tx = await sendMulti(
-        revealData.map((item: any) => ({
+        res.revealData.map((item: any) => ({
           address: item.address,
           value: item.revealFee,
         })),
-        feeRate,
+        res.feeRate,
         true,
       );
       console.log(tx);
@@ -97,14 +97,16 @@ const HomeContent: NextPage = () => {
           error ??
           "Something went wrong when send funds",
       );
-      const addresses = revealData.map((item: any) => item.address);
+
       await cancelTx(addresses);
       return undefined;
     }
     setActiveStep(2);
 
     try {
-      await waitForTx(tx as string);
+      for (const revealAddress of addresses) {
+        await waitForRevealTx(revealAddress);
+      }
     } catch (error: any) {
       console.log(error);
       setErrorStep(2);
@@ -116,7 +118,7 @@ const HomeContent: NextPage = () => {
       return undefined;
     }
     setActiveStep(3);
-  }, [address.ordinals, count, error, feeRate, sendMulti]);
+  }, [address.ordinals, count, error, sendMulti]);
 
   useEffect(() => {
     if (address?.ordinals) {
@@ -145,12 +147,6 @@ const HomeContent: NextPage = () => {
 
     return () => clearTimeout(timer);
   }, [count]);
-
-  useEffect(() => {
-    if (feesRecommended) {
-      setFeeRate(feesRecommended.hourFee);
-    }
-  }, [feesRecommended]);
 
   return (
     <div className="relative h-full overflow-auto transition-all duration-200">
@@ -194,38 +190,9 @@ const HomeContent: NextPage = () => {
               </button>
             </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <Label value="fee rate" className="text-lg" />
-            <div className="relative flex w-full items-center">
-              <button
-                type="button"
-                className="h-11 rounded-s-lg border border-gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
-                onClick={() => setFeeRate(feeRate > 1 ? feeRate - 1 : 1)}
-              >
-                <FaMinus className="h-3 w-3 text-gray-900 dark:text-white" />
-              </button>
-              <input
-                type="text"
-                aria-describedby="helper-text-explanation"
-                className="block h-11 w-full border-x-0 border-gray-300 bg-gray-50 py-2.5 text-center text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                min={1}
-                step={1}
-                value={feeRate}
-                onChange={(e) => setFeeRate(parseInt(e.target.value) ?? 1)}
-                required
-              />
-              <button
-                type="button"
-                className="h-11 rounded-e-lg border border-gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
-                onClick={() => setFeeRate(feeRate + 1)}
-              >
-                <FaPlus className="h-3 w-3 text-gray-900 dark:text-white" />
-              </button>
-            </div>
-          </div>
           {estimateData && (
             <Label
-              value={`${estimateData.vsize}*${feeRate} + ${estimateData.postage} = ${estimateData.vsize * feeRate + estimateData.postage}`}
+              value={`${estimateData.fee} + ${estimateData.postage} = ${estimateData.fee + estimateData.postage} sats (${(estimateData.fee + estimateData.postage) / 100_000_000} BTC)`}
               color="info"
             />
           )}

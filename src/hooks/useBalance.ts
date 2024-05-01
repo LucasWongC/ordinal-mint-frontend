@@ -30,12 +30,16 @@ export function useBalance() {
             >,
           )[0];
 
-          const { spendableUTXOs } = await datasource.getUnspents({
-            address,
-            type: "spendable",
-          });
+          const { spendableUTXOs, unspendableUTXOs } =
+            await datasource.getUnspents({
+              address,
+              type: "all",
+            });
 
-          const totalSatsAvailable = spendableUTXOs.reduce(
+          const totalSatsAvailable = [
+            ...spendableUTXOs,
+            ...unspendableUTXOs,
+          ].reduce(
             (
               total: number,
               spendable: { safeToSpend: boolean; sats: number },

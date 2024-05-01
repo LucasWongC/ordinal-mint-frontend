@@ -12,13 +12,9 @@ export const getEstimateData = async (count: number) => {
   return data;
 };
 
-export const getMintData = async (
-  receiver: string,
-  count: number,
-  feeRate: number,
-) => {
+export const getMintData = async (receiver: string, count: number) => {
   const { data } = await axios.post(
-    `/mint?receiver=${receiver}&count=${count}&fee=${feeRate}`,
+    `/mint?receiver=${receiver}&count=${count}`,
   );
 
   return data;
