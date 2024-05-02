@@ -27,6 +27,7 @@ const config: Config = {
           800: "#1e40af",
           900: "#1e3a8a",
         },
+        white: "#F2F2F2",
       },
       fontFamily: {
         sans: [

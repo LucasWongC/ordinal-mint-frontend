@@ -39,3 +39,9 @@ type ConfirmStep = {
   title: string;
   description: string;
 };
+
+type NFTContent = {
+  title: string;
+  image: string;
+  description: string;
+};

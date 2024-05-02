@@ -30,7 +30,9 @@ const ConformModal: FC<Props> = ({
 }) => {
   return (
     <Modal show={isOpen} onClose={() => setOpen(false)}>
-      <Modal.Header className="bg-slate-800">{title}</Modal.Header>
+      <Modal.Header className="bg-slate-800">
+        <span className="text-white">{title}</span>
+      </Modal.Header>
       <Modal.Body className="overflow-auto bg-slate-800">
         <div className="mt-6 flex w-full flex-col items-start gap-3">
           {steps.map((step, index) => (
@@ -47,7 +49,7 @@ const ConformModal: FC<Props> = ({
               ) : (
                 <BiMinusCircle className="h-7 w-7 text-cyan-600" />
               )}
-              <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-200">
+              <p className="text-lg leading-relaxed text-white dark:text-slate-200">
                 {step.title}
               </p>
             </div>
