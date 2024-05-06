@@ -8,6 +8,16 @@ import NFTContentView from "./NFTContentView";
 import { nftContents } from "./nftContents";
 
 const HomeContent: NextPage = () => {
+  const handleToTop = () => {
+    if (typeof window != undefined) {
+      window.scrollTo({
+        left: 0,
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="relative bg-gradient-to-b from-black to-[#071926] transition-all duration-200">
       <section className="relative h-screen w-full overflow-hidden bg-black">
@@ -106,6 +116,13 @@ const HomeContent: NextPage = () => {
           </div>
           <div className="h-full bg-white" />
         </div>
+        <button
+          type="button"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 p-5 text-sm font-semibold text-white underline"
+          onClick={handleToTop}
+        >
+          Back To Top
+        </button>
       </section>
     </div>
   );

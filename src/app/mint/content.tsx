@@ -53,6 +53,16 @@ const HomeContent: NextPage = () => {
     [userData],
   );
 
+  const handleToTop = () => {
+    if (typeof window != undefined) {
+      window.scrollTo({
+        left: 0,
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const handleMint = useCallback(async () => {
     if (!address?.ordinals || error) {
       return;
@@ -186,12 +196,18 @@ const HomeContent: NextPage = () => {
         <div className="relative h-full overflow-auto transition-all duration-200">
           <div className="m-auto flex h-full w-fit max-w-full items-center justify-center overflow-auto">
             <Card className="w-full max-w-4xl bg-[#49939D36] text-white">
-              You available amount is {availableAmount}
-              {!availableAmount && (
-                <Label
-                  value="You don't have permission to mint"
-                  color="error"
-                />
+              {address?.ordinals ? (
+                <div>
+                  You available amount is {availableAmount}
+                  {!availableAmount && (
+                    <Label
+                      value="You don't have permission to mint"
+                      color="error"
+                    />
+                  )}
+                </div>
+              ) : (
+                <div>Please connect your bitcoin wallet</div>
               )}
               <div className="flex flex-col gap-2">
                 <Label value="count" className="text-lg text-white" />
@@ -283,6 +299,13 @@ const HomeContent: NextPage = () => {
           </div>
           <div className="h-full bg-white" />
         </div>
+        <button
+          type="button"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 p-5 text-sm font-semibold text-white underline"
+          onClick={handleToTop}
+        >
+          Back To Top
+        </button>
       </section>
     </div>
   );
