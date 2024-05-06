@@ -152,7 +152,7 @@ const HomeContent: NextPage = () => {
   return (
     <div className="relative bg-gradient-to-b from-black to-[#071926] transition-all duration-200">
       <section className="relative h-screen w-full overflow-hidden bg-black">
-        {/* <video
+        <video
           className="z-10 mx-auto h-full w-full object-fill"
           autoPlay
           loop
@@ -160,7 +160,7 @@ const HomeContent: NextPage = () => {
           id="landing-video"
         >
           <source src="/landing.mp4" type="video/mp4" />
-        </video> */}
+        </video>
         <div className="absolute left-5 top-[20%]">
           <h2 className="text-5xl font-bold text-white underline">
             Quantum Expeditions
