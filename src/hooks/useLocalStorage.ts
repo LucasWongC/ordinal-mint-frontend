@@ -11,7 +11,7 @@ function getItemFromLocalStorage<T>(_key: string): T | null {
     const value = localStorage.getItem(key);
     return value !== null && value !== undefined ? JSON.parse(value) : null;
   } catch (error) {
-    console.error(`Error retrieving ${key} from localStorage`, error);
+    // console.error(`Error retrieving ${key} from localStorage`, error);
     return null;
   }
 }
@@ -26,7 +26,7 @@ function setItemToLocalStorage<T>(_key: string, value: T) {
       localStorage.removeItem(key);
     }
   } catch (error) {
-    console.error(`Error saving ${key} to localStorage`, error);
+    // console.error(`Error saving ${key} to localStorage`, error);
   }
 }
 
