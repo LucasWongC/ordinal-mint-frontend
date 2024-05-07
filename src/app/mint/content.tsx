@@ -163,7 +163,7 @@ const HomeContent: NextPage = () => {
     <div className="relative bg-gradient-to-b from-black to-[#071926] transition-all duration-200">
       <section className="relative h-screen w-full overflow-hidden bg-black">
         <video
-          className="z-10 mx-auto h-full w-full object-fill"
+          className="z-10 mx-auto h-full w-full object-cover"
           autoPlay
           loop
           muted
