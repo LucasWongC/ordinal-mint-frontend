@@ -247,7 +247,11 @@ const HomeContent: NextPage = () => {
               )}
               {error && <Label value={error} color="error" />}
               {address?.ordinals ? (
-                <Button color="gray" onClick={handleMint}>
+                <Button
+                  color="gray"
+                  disabled={!availableAmount}
+                  onClick={handleMint}
+                >
                   Mint
                 </Button>
               ) : (
