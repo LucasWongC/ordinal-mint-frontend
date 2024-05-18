@@ -198,13 +198,9 @@ const HomeContent: NextPage = () => {
             <Card className="w-full max-w-4xl bg-[#49939D36] text-white">
               {address?.ordinals ? (
                 <div>
-                  You available amount is {availableAmount}
-                  {!availableAmount && (
-                    <Label
-                      value="You don't have permission to mint"
-                      color="error"
-                    />
-                  )}
+                  {availableAmount
+                    ? `You available amount is ${availableAmount}`
+                    : "You don't have permission to mint"}
                 </div>
               ) : (
                 <div>Please connect your bitcoin wallet</div>
