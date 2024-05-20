@@ -1,13 +1,13 @@
 "use client";
 
 import { Navbar } from "flowbite-react";
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import type { FC } from "react";
 
-// const ConnectButton = dynamic(() => import("./ConnectButton"), {
-//   ssr: false,
-// });
+const ConnectButton = dynamic(() => import("./ConnectButton"), {
+  ssr: false,
+});
 
 const AppNavbar: FC<Record<string, never>> = function () {
   return (
@@ -50,7 +50,7 @@ const AppNavbar: FC<Record<string, never>> = function () {
               </Navbar.Collapse>
             </div>
             <div className="flex justify-items-center gap-2">
-              {/* <ConnectButton /> */}
+              <ConnectButton />
               {/* <DarkThemeToggle /> */}
             </div>
           </div>

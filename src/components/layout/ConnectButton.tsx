@@ -32,7 +32,7 @@ const ConnectButton = () => {
         if (!address?.ordinals) {
           return (
             <button
-              className="mr-1 flex items-center rounded-xl bg-[#00000040] px-4 py-3 text-sm text-black hover:bg-[#00000080] dark:text-slate-200"
+              className="mr-1 flex items-center rounded-xl bg-[#00000040] px-4 py-3 text-sm text-slate-200 hover:bg-[#00000080]"
               onClick={() => openModal()}
             >
               Connect Wallet
@@ -41,7 +41,7 @@ const ConnectButton = () => {
         }
 
         return (
-          <div className="text-black dark:text-slate-200">
+          <div className="text-slate-200">
             <Dropdown
               inline
               label={
