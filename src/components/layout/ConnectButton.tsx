@@ -6,7 +6,7 @@ import { emojiAvatarForAddress } from "@/helpers/emojiAvatarForAddress";
 import { useBalance } from "@/hooks";
 import { Avatar, Dropdown } from "flowbite-react";
 import { useEffect, useMemo, useState } from "react";
-import { FaBitcoin, FaCopy, FaSignOutAlt } from "react-icons/fa";
+import { FaCopy, FaSignOutAlt } from "react-icons/fa";
 
 const ConnectButton = () => {
   const { address, openModal, disconnectWallet } = useConnect();
@@ -47,10 +47,14 @@ const ConnectButton = () => {
               label={
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-1">
-                    {(balance ?? 0) / 100_000_000}
-                    <FaBitcoin className="h-6 w-6" />
+                    {((balance ?? 0) / 100_000_000).toFixed(4)}
+                    {/* <FaBitcoin className="h-6 w-6" /> */}
                   </div>
-                  <Avatar rounded placeholderInitials={defaultAvatar?.emoji} />
+                  <Avatar
+                    rounded
+                    size="sm"
+                    placeholderInitials={defaultAvatar?.emoji}
+                  />
                 </div>
               }
             >
