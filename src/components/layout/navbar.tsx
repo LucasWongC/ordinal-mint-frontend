@@ -35,18 +35,20 @@ const AppNavbar: FC<Record<string, never>> = function () {
                 >
                   Mint
                 </Navbar.Link>
-                {/* <Navbar.Link
+                <Navbar.Link
                   href="/whitelist"
                   className="mx-3 text-sm font-semibold text-white underline"
+                  disabled={true}
                 >
                   Whitelist
                 </Navbar.Link>
                 <Navbar.Link
-                  href="/contact"
+                  href="https://quantumexpeditions.com/contact"
+                  target="_blank"
                   className="mx-3 text-sm font-semibold text-white underline"
                 >
                   Contact
-                </Navbar.Link> */}
+                </Navbar.Link>
               </Navbar.Collapse>
             </div>
             <div className="flex justify-items-center gap-2">

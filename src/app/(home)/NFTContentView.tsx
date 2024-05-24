@@ -20,9 +20,9 @@ const NFTContentView: FC<Props> = ({ data }) => {
 
       <div className="group py-8">
         <p className="text-3xl font-bold text-white underline">{data.title}s</p>
-        <div className="fixed left-1/2 top-1/2 mx-4 hidden w-[calc(100%-32px)] max-w-xl -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-[#1A1A1AB2] to-[#071926B2] p-5 px-4 group-hover:block">
-          <div className="mb-10 text-center text-3xl font-semibold text-white underline md:text-4xl">
-            The {data.title}:
+        <div className="fixed left-1/2 top-1/2 z-20 mx-4 hidden w-[calc(100%-32px)] max-w-[556px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-[#1A1A1AB2] to-[#071926B2] px-5 py-5 group-hover:block">
+          <div className="mb-10 text-center text-3xl font-semibold text-white md:text-4xl">
+            <span className="underline">The {data.title}</span>:
           </div>
           <p className="w-full text-center text-xl font-semibold leading-relaxed text-white md:text-2xl">
             {data.description}
