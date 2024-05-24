@@ -37,8 +37,7 @@ const AppNavbar: FC<Record<string, never>> = function () {
                 </Navbar.Link>
                 <Navbar.Link
                   href="/whitelist"
-                  className="mx-3 text-sm font-semibold text-white underline"
-                  disabled={true}
+                  className="pointer-events-none mx-3 text-sm font-semibold text-white underline"
                 >
                   Whitelist
                 </Navbar.Link>
