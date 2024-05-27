@@ -227,7 +227,7 @@ export const SelectWalletModal: FC<SelectWalletModalProp> = ({
           <li>
             <Button
               color="gray"
-              className="grid w-full grid-cols-1"
+              className="grid w-full grid-cols-1 bg-gray-600 text-white"
               size="lg"
               onClick={() => onConnectXverseWallet()}
             >
@@ -242,7 +242,7 @@ export const SelectWalletModal: FC<SelectWalletModalProp> = ({
             <li>
               <Button
                 color="gray"
-                className="grid w-full grid-cols-1"
+                className="grid w-full grid-cols-1 bg-gray-600 text-white"
                 size="lg"
                 onClick={() => onConnectUnisatWallet({ readOnly: false })}
               >
