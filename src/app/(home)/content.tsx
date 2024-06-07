@@ -74,7 +74,7 @@ const HomeContent: NextPage = () => {
         <div className="h-full bg-white" />
       </section>
 
-      <section className="flex h-screen w-full flex-col items-center justify-center py-14">
+      <section className="mt-5 flex h-screen w-full flex-col items-center justify-center py-14">
         <div className="flex h-full flex-col items-center justify-around gap-10 px-[10vw] pb-10 text-white">
           <div className="text-center text-5xl font-bold">
             Our Ordinals are a gift to our community for their trust in us and
