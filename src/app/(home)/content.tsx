@@ -60,22 +60,22 @@ const HomeContent: NextPage = () => {
         </div>
       </section>
 
-      <section className="mt-10 grid h-1 w-full grid-cols-[1fr_auto_1fr] items-center overflow-visible">
+      <section className="grid h-1 w-full grid-cols-[1fr_auto_1fr] items-center overflow-visible">
         <div className="h-full bg-white" />
-        <div className="relative w-[240px] md:w-[370px]">
+        <div className="relative w-[240px] md:w-[480px]">
           <Image
-            width={370}
-            height={394}
+            width={131}
+            height={104}
             src="/logo.gif"
             alt="logo"
-            className="absolute left-1/2 top-1/2 h-[250px] w-[240px] -translate-x-1/2 -translate-y-2/3 md:h-[375px] md:w-[360px]"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/3"
           />
         </div>
         <div className="h-full bg-white" />
       </section>
 
-      <section className="-mt-10 flex h-screen w-full flex-col items-center justify-center pt-28">
-        <div className="flex flex-col items-center gap-10 px-[10vw] pb-10 text-white">
+      <section className="flex h-screen w-full flex-col items-center justify-center py-14">
+        <div className="flex h-full flex-col items-center justify-around gap-10 px-[10vw] pb-10 text-white">
           <div className="text-center text-5xl font-bold">
             Our Ordinals are a gift to our community for their trust in us and
             our vision for joining the upper ranks of Bitcoin Mining.
@@ -127,7 +127,7 @@ const HomeContent: NextPage = () => {
               height={104}
               src="/logo.gif"
               alt="logo"
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/3"
             />
           </div>
           <div className="h-full bg-white" />
