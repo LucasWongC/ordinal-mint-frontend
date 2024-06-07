@@ -10,57 +10,37 @@ import type { FC } from "react";
 const AppNavbar: FC<Record<string, never>> = function () {
   return (
     <header>
-      <Navbar
-        fluid
-        className="fixed top-0 z-30 flex h-[68px] w-full items-center bg-black p-0 sm:p-0"
-      >
-        <div className="w-screen px-[10vw]">
-          <div className="flex h-full items-center justify-end">
-            <div className="flex items-center gap-10">
-              {/* <Navbar.Brand href="/">
-                <Image
-                  width={68}
-                  height={68}
-                  src="/logo.png"
-                  alt="logo"
-                  className="mx-5"
-                />
-              </Navbar.Brand> */}
-              <Navbar.Collapse>
-                <Navbar.Link
-                  href="/"
-                  className="mx-3 text-sm font-semibold text-white underline"
-                >
-                  Home
-                </Navbar.Link>
-                <Navbar.Link
-                  href="https://quantumexpeditions.com/about"
-                  target="_blank"
-                  className="mx-3 text-sm font-semibold text-white underline"
-                >
-                  About
-                </Navbar.Link>
-                <Navbar.Link
-                  href="https://quantumexpeditions.com/contact"
-                  target="_blank"
-                  className="mx-3 text-sm font-semibold text-white underline"
-                >
-                  Contact
-                </Navbar.Link>
-                <Navbar.Link
-                  href="https://wefunder.com/quantum.expeditions"
-                  className="mx-3 text-sm font-semibold text-white underline"
-                >
-                  Whitelist
-                </Navbar.Link>
-              </Navbar.Collapse>
-            </div>
-            {/* <div className="flex justify-items-center gap-2">
-              <ConnectButton />
-              <DarkThemeToggle />
-            </div> */}
-          </div>
-        </div>
+      <Navbar fluid rounded className="bg-black md:px-[10vw]">
+        <Navbar.Brand />
+        <Navbar.Toggle />
+        <Navbar.Collapse>
+          <Navbar.Link
+            href="/"
+            className="mx-3 text-sm font-semibold text-white hover:bg-transparent md:py-4 md:underline"
+          >
+            Home
+          </Navbar.Link>
+          <Navbar.Link
+            href="https://quantumexpeditions.com/about"
+            target="_blank"
+            className="mx-3 text-sm font-semibold text-white hover:bg-transparent md:py-4 md:underline"
+          >
+            About
+          </Navbar.Link>
+          <Navbar.Link
+            href="https://quantumexpeditions.com/contact"
+            target="_blank"
+            className="mx-3 text-sm font-semibold text-white hover:bg-transparent md:py-4 md:underline"
+          >
+            Contact
+          </Navbar.Link>
+          <Navbar.Link
+            href="https://wefunder.com/quantum.expeditions"
+            className="mx-3 text-sm font-semibold text-white hover:bg-transparent md:py-4 md:underline"
+          >
+            Whitelist
+          </Navbar.Link>
+        </Navbar.Collapse>
       </Navbar>
     </header>
   );

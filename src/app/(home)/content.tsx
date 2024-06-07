@@ -25,8 +25,8 @@ const HomeContent: NextPage = () => {
   return (
     <div className="relative bg-gradient-to-b from-black to-[#071926] transition-all duration-200">
       <MintModal isOpen={mintOpen} setOpen={setMintOpen} />
-      <section className="relative h-screen w-full overflow-hidden bg-black">
-        <video
+      <section className="relative w-full overflow-hidden bg-black md:h-screen">
+        {/* <video
           className="z-10 mx-auto h-full w-full object-cover"
           autoPlay
           loop
@@ -34,8 +34,8 @@ const HomeContent: NextPage = () => {
           id="landing-video"
         >
           <source src="/landing.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute left-0 top-[calc(68px+0px)]">
+        </video> */}
+        <div className="absolute left-0 top-0 -translate-x-1/4 scale-50 md:left-0 md:top-[68px] md:translate-x-0 md:scale-100">
           <div className="flex items-center">
             <Image width={204} height={205} src="/logo.png" alt="logo" />
             <div className="flex flex-col items-center text-white">
@@ -49,7 +49,7 @@ const HomeContent: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="absolute right-[25%] top-[50%]">
+        <div className="absolute right-[25%] top-[65%] scale-75 md:scale-100">
           <button
             type="button"
             onClick={() => setMintOpen(true)}
@@ -74,14 +74,14 @@ const HomeContent: NextPage = () => {
         <div className="h-full bg-white" />
       </section>
 
-      <section className="mt-5 flex h-screen w-full flex-col items-center justify-center py-14">
-        <div className="flex h-full flex-col items-center justify-around gap-10 px-[10vw] pb-10 text-white">
-          <div className="text-center text-5xl font-bold">
+      <section className="mt-5 flex w-full flex-col items-center justify-center py-14 md:h-screen">
+        <div className="flex h-full flex-col items-center justify-around gap-10 px-[10vw] text-white md:pb-10">
+          <div className="text-center text-2xl font-bold md:text-3xl lg:text-4xl xl:text-5xl">
             Our Ordinals are a gift to our community for their trust in us and
             our vision for joining the upper ranks of Bitcoin Mining.
           </div>
           <div className="h-1 w-[20vw] bg-white" />
-          <div className="text-center text-4xl">
+          <div className="text-center text-xl md:text-2xl lg:text-3xl xl:text-4xl">
             To join our whitelist and gain access to our Exclusive collection we
             linked out WeFunder (link below) where each investment of $2,500
             secures an Ordinal.
@@ -89,11 +89,11 @@ const HomeContent: NextPage = () => {
           <div className="h-1 w-[20vw] bg-white" />
           <Link
             href="https://wefunder.com/quantum.expeditions"
-            className="my-10 rounded-xl border-[3.5px] border-white bg-[#49939D36] px-10 py-4 text-3xl font-semibold uppercase tracking-widest text-white shadow-[2px_4px_6px_2px_#49939DF5]"
+            className="my-0 rounded-xl border-[3.5px] border-white bg-[#49939D36] px-5 py-2 text-xl font-semibold uppercase tracking-widest text-white shadow-[2px_4px_6px_2px_#49939DF5] md:my-10 md:px-10 md:py-4 md:text-3xl"
           >
             Join Whitelist
           </Link>
-          <div className="py-5 text-center text-5xl font-extrabold">
+          <div className="py-2 text-center text-sm font-extrabold md:py-5 md:text-3xl lg:text-4xl xl:text-5xl">
             --- STAY SAFE. STACK SATS. HODL ---
           </div>
         </div>
