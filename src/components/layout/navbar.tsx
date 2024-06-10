@@ -10,7 +10,7 @@ import type { FC } from "react";
 const AppNavbar: FC<Record<string, never>> = function () {
   return (
     <header>
-      <Navbar fluid rounded className="bg-black md:px-[10vw]">
+      <Navbar fluid className="bg-black md:px-[10vw]">
         <Navbar.Brand />
         <Navbar.Toggle />
         <Navbar.Collapse>
