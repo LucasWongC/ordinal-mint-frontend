@@ -217,13 +217,18 @@ const MintModal: FC<Props> = ({ isOpen, setOpen }) => {
               )}
               {error && <Label value={error} color="error" />}
               {address?.ordinals ? (
-                <Button
-                  color="gray"
-                  disabled={!availableAmount}
-                  onClick={handleMint}
-                >
-                  Mint
-                </Button>
+                <div className="flex w-full flex-col gap-5">
+                  <Button
+                    color="gray"
+                    disabled={!availableAmount}
+                    onClick={handleMint}
+                  >
+                    Mint
+                  </Button>
+                  <Button color="gray" onClick={() => openModal()}>
+                    Connect Another Wallet
+                  </Button>
+                </div>
               ) : (
                 <Button color="gray" onClick={() => openModal()}>
                   Connect Wallet
