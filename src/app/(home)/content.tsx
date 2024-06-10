@@ -26,7 +26,7 @@ const HomeContent: NextPage = () => {
     <div className="relative bg-gradient-to-b from-black to-[#071926] transition-all duration-200">
       <MintModal isOpen={mintOpen} setOpen={setMintOpen} />
       <section className="relative w-full overflow-hidden bg-black md:h-screen">
-        <video
+        {/* <video
           className="z-10 mx-auto h-full w-full object-cover"
           autoPlay
           loop
@@ -34,7 +34,7 @@ const HomeContent: NextPage = () => {
           id="landing-video"
         >
           <source src="/landing.mp4" type="video/mp4" />
-        </video>
+        </video> */}
         <div className="absolute left-0 top-0 -translate-x-1/4 scale-50 md:left-0 md:top-[68px] md:translate-x-0 md:scale-100">
           <div className="flex items-center">
             <Image width={204} height={205} src="/logo.png" alt="logo" />
@@ -109,7 +109,7 @@ const HomeContent: NextPage = () => {
         </div>
       </section>
 
-      <section className="relative h-screen w-full overflow-hidden pb-28">
+      <section className="relative h-80 w-full overflow-hidden pb-28 md:h-screen">
         <div className="relative h-full w-full overflow-visible">
           <Image
             objectFit="cover"
