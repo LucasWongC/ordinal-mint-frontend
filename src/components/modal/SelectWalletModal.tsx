@@ -219,6 +219,12 @@ export const SelectWalletModal: FC<SelectWalletModalProp> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wallet, onConnectUnisatWallet, disconnectWallet]);
 
+  useEffect(() => {
+    if (window) {
+      window.alert(window.location.href);
+    }
+  });
+
   return (
     <Modal show={isOpen} size="sm" onClose={closeModal}>
       <Modal.Header>
