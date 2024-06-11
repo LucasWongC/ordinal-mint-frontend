@@ -157,12 +157,18 @@ export const SelectWalletModal: FC<SelectWalletModalProp> = ({
       closeModal();
       return true;
     } catch (err) {
-      onError(Wallet.XVERSE, err as Error);
+      if (isMobile) {
+        const currentUrl = window.location.href;
+        window.location.href = `xverse://browser?url=${currentUrl}`;
+      } else {
+        onError(Wallet.XVERSE, err as Error);
+      }
       return false;
     }
   }, [
     closeModal,
     disconnectWallet,
+    isMobile,
     network,
     onError,
     updateAddress,
