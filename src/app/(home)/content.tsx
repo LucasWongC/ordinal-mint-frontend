@@ -25,17 +25,15 @@ const HomeContent: NextPage = () => {
   return (
     <div className="relative bg-gradient-to-b from-black to-[#071926] transition-all duration-200">
       <MintModal isOpen={mintOpen} setOpen={setMintOpen} />
-      <section className="relative w-full overflow-hidden bg-black md:h-screen">
-        <video
-          className="z-10 mx-auto h-full w-full object-cover"
-          autoPlay
-          loop
-          muted
-          id="landing-video"
-        >
-          <source src="/landing.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute left-0 top-0 -translate-x-1/4 scale-50 md:left-0 md:top-[68px] md:translate-x-0 md:scale-100">
+      <section className="relative aspect-[96/72] w-full overflow-hidden bg-black md:h-screen">
+        <Image
+          objectFit="cover"
+          layout="fill"
+          className="mx-auto h-full w-full object-cover"
+          src="/landing.gif"
+          alt="landing"
+        />
+        <div className="absolute left-0 top-0 -translate-x-1/4 scale-50 md:left-0 md:top-[120px] md:translate-x-0 md:scale-100">
           <div className="flex items-center">
             <Image width={204} height={205} src="/logo.png" alt="logo" />
             <div className="flex flex-col items-center text-white">
