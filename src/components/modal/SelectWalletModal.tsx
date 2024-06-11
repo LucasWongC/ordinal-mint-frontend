@@ -221,7 +221,7 @@ export const SelectWalletModal: FC<SelectWalletModalProp> = ({
 
   useEffect(() => {
     if (window) {
-      window.alert(window.location.href);
+      window.alert(navigator.userAgent);
     }
   });
 
