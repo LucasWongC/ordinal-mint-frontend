@@ -7,10 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import NFTContentView from "./NFTContentView";
+import Wefunder from "./Wefunder";
 import { nftContents } from "./nftContents";
 
 const HomeContent: NextPage = () => {
   const [mintOpen, setMintOpen] = useState<boolean>(false);
+  const [wefunderOpen, setWefunderOpen] = useState<boolean>(false);
 
   const handleToTop = () => {
     if (typeof window != undefined) {
@@ -47,14 +49,23 @@ const HomeContent: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="absolute right-[25%] top-[65%] scale-75 md:scale-100">
-          <button
-            type="button"
-            onClick={() => setMintOpen(true)}
-            className="rounded-xl border-[3.5px] border-white bg-[#49939D36] px-8 py-3 font-semibold uppercase tracking-widest text-white shadow-[2px_4px_6px_2px_#49939DF5]"
-          >
-            Mint
-          </button>
+        <div className="absolute right-12 top-36 scale-75 md:right-[25%] md:top-[50%] md:scale-100">
+          <div className="flex flex-col items-center gap-9">
+            <Link
+              href="https://wefunder.com/quantum.expeditions"
+              target="_blank"
+              className="rounded-xl border-[3.5px] border-white bg-[#49939D36] p-[6px] text-[25px] font-semibold uppercase leading-[32px] -tracking-wide text-white shadow-[2px_4px_6px_2px_#49939DF5] [text-shadow:0px_4px_4px_0px_#00000040]"
+            >
+              Join whitelist
+            </Link>
+            <button
+              type="button"
+              onClick={() => setMintOpen(true)}
+              className="rounded-xl border-[3.5px] border-white bg-[#49939D36] px-8 py-3 text-[28px] font-semibold uppercase leading-[32px] tracking-widest text-white shadow-[2px_4px_6px_2px_#49939DF5] [text-shadow:0px_4px_4px_0px_#00000040]"
+            >
+              Mint
+            </button>
+          </div>
         </div>
       </section>
 
@@ -85,12 +96,14 @@ const HomeContent: NextPage = () => {
             secures an Ordinal.
           </div>
           <div className="h-1 w-[20vw] bg-white" />
-          <Link
-            href="https://wefunder.com/quantum.expeditions"
-            className="my-0 rounded-xl border-[3.5px] border-white bg-[#49939D36] px-5 py-2 text-xl font-semibold uppercase tracking-widest text-white shadow-[2px_4px_6px_2px_#49939DF5] md:my-10 md:px-10 md:py-4 md:text-3xl"
+          <button
+            type="button"
+            onClick={() => setWefunderOpen(!wefunderOpen)}
+            className="my-0 rounded-xl border-[3.5px] border-white bg-[#49939D36] px-5 py-2 text-xl font-black uppercase tracking-widest text-white shadow-[2px_4px_6px_2px_#49939DF5] md:my-10 md:px-10 md:py-4 md:text-3xl"
           >
-            Join Whitelist
-          </Link>
+            wefunder
+          </button>
+          <Wefunder isOpen={wefunderOpen} setIsOpen={setWefunderOpen} />
           <div className="py-2 text-center text-sm font-extrabold md:py-5 md:text-3xl lg:text-4xl xl:text-5xl">
             --- STAY SAFE. STACK SATS. HODL ---
           </div>
