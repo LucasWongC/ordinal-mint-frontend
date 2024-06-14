@@ -27,7 +27,7 @@ const HomeContent: NextPage = () => {
   return (
     <div className="relative bg-gradient-to-b from-black to-[#071926] transition-all duration-200">
       <MintModal isOpen={mintOpen} setOpen={setMintOpen} />
-      <section className="relative aspect-[96/72] w-full overflow-hidden bg-black md:h-screen">
+      <section className="relative aspect-[96/80] w-full overflow-hidden bg-black md:h-screen">
         <Image
           objectFit="cover"
           layout="fill"
